@@ -1,0 +1,150 @@
+---
+title: "Exploration into Gapminder"
+author: "Nicole Hawe"
+date: "September 25, 2017"
+output: html_document
+---
+
+Introduction
+------------
+
+Within this second homework assignment, we explore the Gapminder dataset in more detail. 
+
+
+This page will cover the work flow for: 
+
+- Overall Properties of the Gapminder Dataset
+
+- Variable Property Exploration
+
+- Data Visualization using ggplot2
+
+- Data Filtering/ Piping
+
+- Reflections
+
+
+Overall Properties of the Dataset
+---------------------------------
+
+The first step is to load the Gapminder dataset and packages we need!
+
+```{r}
+library(gapminder)
+library(tidyverse)
+```
+
+```{r}
+library(ggplot2)
+```
+
+So the assignment begins with the question: what is Gapminder? Is it a data.frame, a matrix, a vector, a list? Well, I decided to check this by using typeof() function.
+
+```{r}
+typeof(gapminder)
+```
+
+However I would like to know the class of gapminder
+
+```{r}
+class(gapminder)
+```
+
+It appears to be a data frame, or more specifically a tibble!
+
+Next, information regarding the struture of the dataset was asked such as:
+
+- How many variables/columns do we have? We can use ncol in R
+
+- How many rows/observations do we have? We can use nrow in R
+
+
+```{r}
+ncol(gapminder)
+```
+
+```{r}
+nrow(gapminder)
+```
+So it looks like this dataset has 6 columns with 1704 rows!
+
+The it was asked whether we can get these facts about “extent” or “size” in more than one way? Can you imagine different functions being useful in different contexts?
+
+we can find the length by
+
+```{r}
+length(gapminder)
+```
+
+Or the dimensions by
+
+```{r}
+dim(gapminder)
+```
+
+We can also find the names of all th columns by
+
+```{r}
+names(gapminder)
+```
+
+Or get an overall sense of the structure using
+```{r}
+str(gapminder)
+```
+
+This information can be found in several way!
+
+Next we needed to find the type of each variable in this dataset using the typeof function
+
+```{r}
+typeof(gapminder$country)
+typeof(gapminder$continent)
+typeof(gapminder$year)
+typeof(gapminder$lifeExp)
+typeof(gapminder$pop)
+typeof(gapminder$gdpPercap)
+```
+
+Exploration of Individual Variables
+-----------------------------------
+
+For this part of the homework assignment we were to pick at least one categorical variable and at least one quantitative variable to explore.
+
+For my categorical variable I chose **Year**
+
+For my quantitative variable I chose **LifeExp**
+
+For these we needed to find the possible values (or range, whichever is appropriate) of each variable?
+
+What values are typical? What’s the spread? What’s the distribution? 
+
+So beginning with Year:
+
+I wanted a nice summary to start with 
+```{r}
+summary(gapminder$year)
+```
+
+```{r}
+table(gapminder$year)
+```
+
+From this quick summary and table I see that the minimum year is 1952 and it ranges to the maximum being 2007. Both the median and mean are 1980. I also appears that samples were taken every 5 years starting in 1952.
+
+Moving onto the quantitative variable LifeExp:
+
+```{r}
+summary(gapminder$lifeExp)
+```
+ 
+From this summary we can see the minimum value is 23.60 whereas the max is 82.60. This is quite a large spread. The median lies at 60.71 and the mean at 59.47.
+
+For a value such as LifeExp a table may be too large and unuseful.
+
+A quick plot can sometimes help though!
+
+```{r}
+hist(gapminder$lifeExp)
+```
+
