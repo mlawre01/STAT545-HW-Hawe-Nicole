@@ -17,6 +17,9 @@ The overall flow of this homework assignment was:
 - Reflections regarding this assignment
 
 
+Also please note that all plots should be viewed in the .md file
+
+
 
 **I hope you find this page informative and interesting**
 
