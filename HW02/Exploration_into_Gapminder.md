@@ -43,6 +43,10 @@ library(tidyverse)
     ## lag():    dplyr, stats
 
 ``` r
+library(dplyr)
+```
+
+``` r
 library(ggplot2)
 ```
 
@@ -263,4 +267,25 @@ ggplot(subset(gapminder, country %in% jCountries), aes(x = year, y = lifeExp, co
 
 ![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-19-1.png)
 
-Wow you can really see the large separation between more developed countries (sweden, Canada, and Spain)
+Wow you can really see the large separation between more developed countries (Sweden, Canada, and Spain) and lesser like Rwanada and afghanistan. Also you see a severe dip in LifeExp in Rwanada around 1992, I'm guessing due to the war happening around that time.
+
+Piping Practice
+---------------
+
+Next we went on to practice the filter function as well as piping filter and select together! These functions help narrow down and focus in on the data we care about. Say I only wanted the LifeExp versus year for Canada I could filter this:
+
+``` r
+ggplot(gapminder %>% filter(country == "Canada"), aes(x = year, y = lifeExp)) + geom_line() + geom_point()
+```
+
+![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-20-1.png)
+
+NExt I wanted to attempt to use filter and select together to plot LifeExp versus Year for Cambodia:
+
+``` r
+filter(gapminder, country == c("Cambodia")) %>%select(year, lifeExp) %>%ggplot(aes(x=year, y=lifeExp))+ geom_line() + geom_point()
+```
+
+![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-21-1.png)
+
+Again you see a drastic drop in LifeExp around 1975, again around the time this country was experiencing a civil war.
