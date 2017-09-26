@@ -2,10 +2,7 @@
 title: "Exploration into Gapminder"
 author: "Nicole Hawe"
 date: "September 25, 2017"
-output: 
-  html_document:
-  github_document: 
-    keep_md: yes
+output: github_document
 ---
 
 Introduction

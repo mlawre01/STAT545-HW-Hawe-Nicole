@@ -218,3 +218,49 @@ hist(gapminder$lifeExp)
 ```
 
 ![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-15-1.png)
+
+Gapminder Dataset Visualization Using ggplot2
+---------------------------------------------
+
+In this part of the assignment we were to make a few plots, using the same variable we chose to characterize numerically. The goal was to try to explore more than one plot type. For example:
+
+-   A scatterplot of two quantitative variables.
+
+-   A plot of one quantitative variable. Maybe a histogram or densityplot or frequency polygon.
+
+-   A plot of one quantitative variable and one categorical. Maybe boxplots for several continents or countries.
+
+For a scatterplot I chose to see the relationship between LifeExp and gdpPerCap
+
+``` r
+ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) + geom_point()
+```
+
+![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-16-1.png)
+
+Next I wanted to check out a histogram for gdpPercap
+
+``` r
+hist(gapminder$gdpPercap)
+```
+
+![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-17-1.png)
+
+ALso just to refresh your memory a histogram of LifeExp
+
+``` r
+hist(gapminder$lifeExp)
+```
+
+![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-18-1.png)
+
+Next I wanted to try something a little more interesting. I wanted to look at LifeExp versus Year, but I wanted to divide this into countries. I arbitrarily picked Canda, Afghanistan, Sweden, Rwanda, and Spain. Let's see if we can pull this off
+
+``` r
+jCountries <- c("Canada", "Afghanistan", "Sweden", "Rwanda", "Spain")
+ggplot(subset(gapminder, country %in% jCountries), aes(x = year, y = lifeExp, color = country)) + geom_line() + geom_point()
+```
+
+![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-19-1.png)
+
+Wow you can really see the large separation between more developed countries (sweden, Canada, and Spain)
