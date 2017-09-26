@@ -13,7 +13,7 @@ The overall flow of this homework assignment was:
 - Visualize the overall properties of the Gapminder dataset
 - Exploration into properties of specific variables
 - Data visualization using ggplot2
-- Data filtering and piping
+- Practice Piping
 - Reflections regarding this assignment
 
 
