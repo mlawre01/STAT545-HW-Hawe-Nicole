@@ -1,5 +1,5 @@
 ***
-#Homework 2: Exploring Gapminder and Use of Dyplyr
+# Homework 2: Exploring Gapminder and Use of Dyplyr
 ***
 
 #### Information About This Folder
