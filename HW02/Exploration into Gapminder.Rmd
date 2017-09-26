@@ -95,7 +95,16 @@ Or get an overall sense of the structure using
 str(gapminder)
 ```
 
-This information can be found in several way!
+The str function is a way of viewing the number of columns and rows along with the class and name of each variable! This is a great way to see many overall facts about the dataset!
+
+```{r}
+summary(gapminder)
+```
+
+
+The summary function shows the dataset in a different way and for variables that are numbers or integers it shows importants statistics on them!
+
+As you can see this information can be found in several ways!
 
 Next we needed to find the type of each variable in this dataset using the typeof function
 
@@ -180,27 +189,38 @@ ALso just to refresh your memory a histogram of LifeExp
 hist(gapminder$lifeExp)
 ```
 
-Next I wanted to try something a little more interesting. I wanted to look at LifeExp versus Year, but I wanted to divide this into countries. I arbitrarily picked Canda, Afghanistan, Sweden, Rwanda, and Spain. Let's see if we can pull this off
+Now I wanted to test out a plot while changing the colour:
+
+```{r}
+ggplot(gapminder, aes(x=year, y=lifeExp)) +
+  geom_point(size=2, aes(colour = continent))
+```
+
+
+Next I wanted to try something a little more interesting. I wanted to look at LifeExp versus Year, but I wanted to divide this into countries. I arbitrarily picked Canda, Afghanistan, Sweden, Rwanda, and Spain. Let's see if we can pull this off.
+
+Please note I used [This helpful link](https://github.com/jennybc/ggplot2-tutorial)
+
 
 ```{r}
 jCountries <- c("Canada", "Afghanistan", "Sweden", "Rwanda", "Spain")
 ggplot(subset(gapminder, country %in% jCountries), aes(x = year, y = lifeExp, color = country)) + geom_line() + geom_point()
 ```
 
-Wow you can really see the large separation between more developed countries (Sweden, Canada, and Spain) and lesser like Rwanada and afghanistan. Also you see a severe dip in LifeExp in Rwanada around 1992, I'm guessing due to the war happening around that time.
+You can really see the large separation between more developed countries (Sweden, Canada, and Spain) and lesser like Rwanada and afghanistan. Also you see a severe dip in LifeExp in Rwanada around 1992, I'm guessing due to the war happening around that time.
 
 
-Piping Practice
----------------
+Piping Practice with Dyplyr Function
+------------------------------------
 
-Next we went on to practice the filter function as well as piping filter and select together! These functions help narrow down and focus in on the data we care about. Say I only wanted the LifeExp versus year for Canada I could filter this:
+Next we went on to practice the filter function as well as piping the dyplyr filter and select functions together! These functions help narrow down and focus in on the data we care about. Say I only wanted the LifeExp versus year for Canada I could filter this:
 
 ```{r}
 ggplot(gapminder %>% filter(country == "Canada"), aes(x = year, y = lifeExp)) + geom_line() + geom_point()
 ```
 
 
-NExt I wanted to attempt to use filter and select together to plot LifeExp versus Year for Cambodia:
+Next I wanted to attempt to use filter and select together to plot LifeExp versus Year for Cambodia:
 
 ```{r}
 filter(gapminder, country == c("Cambodia")) %>%select(year, lifeExp) %>%ggplot(aes(x=year, y=lifeExp))+ geom_line() + geom_point()

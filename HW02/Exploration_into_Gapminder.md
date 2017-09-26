@@ -128,7 +128,32 @@ str(gapminder)
     ##  $ pop      : int  8425333 9240934 10267083 11537966 13079460 14880372 12881816 13867957 16317921 22227415 ...
     ##  $ gdpPercap: num  779 821 853 836 740 ...
 
-This information can be found in several way!
+The str function is a way of viewing the number of columns and rows along with the class and name of each variable! This is a great way to see many overall facts about the dataset!
+
+``` r
+summary(gapminder)
+```
+
+    ##         country        continent        year         lifeExp     
+    ##  Afghanistan:  12   Africa  :624   Min.   :1952   Min.   :23.60  
+    ##  Albania    :  12   Americas:300   1st Qu.:1966   1st Qu.:48.20  
+    ##  Algeria    :  12   Asia    :396   Median :1980   Median :60.71  
+    ##  Angola     :  12   Europe  :360   Mean   :1980   Mean   :59.47  
+    ##  Argentina  :  12   Oceania : 24   3rd Qu.:1993   3rd Qu.:70.85  
+    ##  Australia  :  12                  Max.   :2007   Max.   :82.60  
+    ##  (Other)    :1632                                                
+    ##       pop              gdpPercap       
+    ##  Min.   :6.001e+04   Min.   :   241.2  
+    ##  1st Qu.:2.794e+06   1st Qu.:  1202.1  
+    ##  Median :7.024e+06   Median :  3531.8  
+    ##  Mean   :2.960e+07   Mean   :  7215.3  
+    ##  3rd Qu.:1.959e+07   3rd Qu.:  9325.5  
+    ##  Max.   :1.319e+09   Max.   :113523.1  
+    ## 
+
+The summary function shows the dataset in a different way and for variables that are numbers or integers it shows importants statistics on them!
+
+As you can see this information can be found in several ways!
 
 Next we needed to find the type of each variable in this dataset using the typeof function
 
@@ -221,7 +246,7 @@ A quick plot can sometimes help though!
 hist(gapminder$lifeExp)
 ```
 
-![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-15-1.png)
+![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-16-1.png)
 
 Gapminder Dataset Visualization Using ggplot2
 ---------------------------------------------
@@ -240,7 +265,7 @@ For a scatterplot I chose to see the relationship between LifeExp and gdpPerCap
 ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) + geom_point()
 ```
 
-![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-16-1.png)
+![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-17-1.png)
 
 Next I wanted to check out a histogram for gdpPercap
 
@@ -248,7 +273,7 @@ Next I wanted to check out a histogram for gdpPercap
 hist(gapminder$gdpPercap)
 ```
 
-![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-17-1.png)
+![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-18-1.png)
 
 ALso just to refresh your memory a histogram of LifeExp
 
@@ -256,36 +281,47 @@ ALso just to refresh your memory a histogram of LifeExp
 hist(gapminder$lifeExp)
 ```
 
-![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-18-1.png)
+![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-19-1.png)
 
-Next I wanted to try something a little more interesting. I wanted to look at LifeExp versus Year, but I wanted to divide this into countries. I arbitrarily picked Canda, Afghanistan, Sweden, Rwanda, and Spain. Let's see if we can pull this off
+Now I wanted to test out a plot while changing the colour:
+
+``` r
+ggplot(gapminder, aes(x=year, y=lifeExp)) +
+  geom_point(size=2, aes(colour = continent))
+```
+
+![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-20-1.png)
+
+Next I wanted to try something a little more interesting. I wanted to look at LifeExp versus Year, but I wanted to divide this into countries. I arbitrarily picked Canda, Afghanistan, Sweden, Rwanda, and Spain. Let's see if we can pull this off.
+
+Please note I used [This helpful link](https://github.com/jennybc/ggplot2-tutorial)
 
 ``` r
 jCountries <- c("Canada", "Afghanistan", "Sweden", "Rwanda", "Spain")
 ggplot(subset(gapminder, country %in% jCountries), aes(x = year, y = lifeExp, color = country)) + geom_line() + geom_point()
 ```
 
-![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-19-1.png)
+![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-21-1.png)
 
-Wow you can really see the large separation between more developed countries (Sweden, Canada, and Spain) and lesser like Rwanada and afghanistan. Also you see a severe dip in LifeExp in Rwanada around 1992, I'm guessing due to the war happening around that time.
+You can really see the large separation between more developed countries (Sweden, Canada, and Spain) and lesser like Rwanada and afghanistan. Also you see a severe dip in LifeExp in Rwanada around 1992, I'm guessing due to the war happening around that time.
 
-Piping Practice
----------------
+Piping Practice with Dyplyr Function
+------------------------------------
 
-Next we went on to practice the filter function as well as piping filter and select together! These functions help narrow down and focus in on the data we care about. Say I only wanted the LifeExp versus year for Canada I could filter this:
+Next we went on to practice the filter function as well as piping the dyplyr filter and select functions together! These functions help narrow down and focus in on the data we care about. Say I only wanted the LifeExp versus year for Canada I could filter this:
 
 ``` r
 ggplot(gapminder %>% filter(country == "Canada"), aes(x = year, y = lifeExp)) + geom_line() + geom_point()
 ```
 
-![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-20-1.png)
+![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-22-1.png)
 
-NExt I wanted to attempt to use filter and select together to plot LifeExp versus Year for Cambodia:
+Next I wanted to attempt to use filter and select together to plot LifeExp versus Year for Cambodia:
 
 ``` r
 filter(gapminder, country == c("Cambodia")) %>%select(year, lifeExp) %>%ggplot(aes(x=year, y=lifeExp))+ geom_line() + geom_point()
 ```
 
-![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-21-1.png)
+![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-23-1.png)
 
 Again you see a drastic drop in LifeExp around 1975, again around the time this country was experiencing a civil war.
