@@ -36,10 +36,6 @@ library(dplyr)
 
 ```
 
-```{r}
-library(ggplot2)
-```
-
 So the assignment begins with the question: what is Gapminder? Is it a data.frame, a matrix, a vector, a list? Well, I decided to check this by using typeof() function.
 
 ```{r}
@@ -213,18 +209,60 @@ You can really see the large separation between more developed countries (Sweden
 Piping Practice with Dyplyr Function
 ------------------------------------
 
-Next we went on to practice the filter function as well as piping the dyplyr filter and select functions together! These functions help narrow down and focus in on the data we care about. Say I only wanted the LifeExp versus year for Canada I could filter this:
+Next we went on to practice the filter function as well as piping the dyplyr filter and select functions together! These functions help narrow down and focus in on the data we care about. 
+
+To start I wanted to find the mean lifeExp of each continent:
 
 ```{r}
-ggplot(gapminder %>% filter(country == "Canada"), aes(x = year, y = lifeExp)) + geom_line() + geom_point()
+gapminder %>%
+  group_by(continent) %>%
+  summarize(meanLife = round(mean(lifeExp), 1)) %>%
+  arrange(desc(meanLife))
+```
+
+Here I get a table that has filtered the gapminder dataset to show the mean lifeExp (meanLife) of each continent in descending order based on the meanLife value!
+
+Next maybe I want to look at the variables but only for specific countries in a specific year:
+
+```{r}
+gapminder %>%
+  filter(country %in% c("Sweden", "Norway", "Switzerland"), year == 2002)
+```
+
+Now What if we tried incorporating these dyplyr function with ggplot!
+
+
+Say I only wanted the LifeExp versus year for Canada I could filter this:
+
+```{r}
+ggplot(gapminder %>% 
+         filter(country == "Canada"), aes(x = year, y = lifeExp)) + geom_line() + geom_point()
 ```
 
 
 Next I wanted to attempt to use filter and select together to plot LifeExp versus Year for Cambodia:
 
 ```{r}
-filter(gapminder, country == c("Cambodia")) %>%select(year, lifeExp) %>%ggplot(aes(x=year, y=lifeExp))+ geom_line() + geom_point()
+filter(gapminder, country == c("Cambodia")) %>%
+  select(year, lifeExp) %>%
+  ggplot(aes(year, lifeExp)) + geom_line() + geom_point(colour="magenta")
 ```
 
 Again you see a drastic drop in LifeExp around 1975, again around the time this country was experiencing a civil war.
 
+Piping in a very powerful way to string together many functions.
+
+#### We Survived!
+
+Reflections on This Assignment
+------------------------------
+
+Due to be a serious newcomer to this world of Stats I decided to stop this assignment here and not dive into the "I want to do more" section.
+
+This assignment challenged me a lot and I spent a long time sifting through all of the tutorials to wrap my head around the proper use of different functions.
+
+I feel as though it was a big step up from Assignment 1, but this may just be for me!
+
+It took me a long time to figure out the order of things and to be honest I would love to hear your feedback on my ordering.
+
+I enjoyed working with ggplot2 a lot because it is a great visual tool an could see how the different functions altered the graph. This helped me understand a lot.

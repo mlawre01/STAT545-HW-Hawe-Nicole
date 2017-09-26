@@ -46,10 +46,6 @@ library(tidyverse)
 library(dplyr)
 ```
 
-``` r
-library(ggplot2)
-```
-
 So the assignment begins with the question: what is Gapminder? Is it a data.frame, a matrix, a vector, a list? Well, I decided to check this by using typeof() function.
 
 ``` r
@@ -246,7 +242,7 @@ A quick plot can sometimes help though!
 hist(gapminder$lifeExp)
 ```
 
-![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-16-1.png)
+![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-15-1.png)
 
 Gapminder Dataset Visualization Using ggplot2
 ---------------------------------------------
@@ -265,7 +261,7 @@ For a scatterplot I chose to see the relationship between LifeExp and gdpPerCap
 ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) + geom_point()
 ```
 
-![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-17-1.png)
+![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-16-1.png)
 
 Next I wanted to check out a histogram for gdpPercap
 
@@ -273,7 +269,7 @@ Next I wanted to check out a histogram for gdpPercap
 hist(gapminder$gdpPercap)
 ```
 
-![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-18-1.png)
+![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-17-1.png)
 
 ALso just to refresh your memory a histogram of LifeExp
 
@@ -281,7 +277,7 @@ ALso just to refresh your memory a histogram of LifeExp
 hist(gapminder$lifeExp)
 ```
 
-![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-19-1.png)
+![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-18-1.png)
 
 Now I wanted to test out a plot while changing the colour:
 
@@ -290,7 +286,7 @@ ggplot(gapminder, aes(x=year, y=lifeExp)) +
   geom_point(size=2, aes(colour = continent))
 ```
 
-![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-20-1.png)
+![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-19-1.png)
 
 Next I wanted to try something a little more interesting. I wanted to look at LifeExp versus Year, but I wanted to divide this into countries. I arbitrarily picked Canda, Afghanistan, Sweden, Rwanda, and Spain. Let's see if we can pull this off.
 
@@ -301,27 +297,85 @@ jCountries <- c("Canada", "Afghanistan", "Sweden", "Rwanda", "Spain")
 ggplot(subset(gapminder, country %in% jCountries), aes(x = year, y = lifeExp, color = country)) + geom_line() + geom_point()
 ```
 
-![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-21-1.png)
+![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-20-1.png)
 
 You can really see the large separation between more developed countries (Sweden, Canada, and Spain) and lesser like Rwanada and afghanistan. Also you see a severe dip in LifeExp in Rwanada around 1992, I'm guessing due to the war happening around that time.
 
 Piping Practice with Dyplyr Function
 ------------------------------------
 
-Next we went on to practice the filter function as well as piping the dyplyr filter and select functions together! These functions help narrow down and focus in on the data we care about. Say I only wanted the LifeExp versus year for Canada I could filter this:
+Next we went on to practice the filter function as well as piping the dyplyr filter and select functions together! These functions help narrow down and focus in on the data we care about.
+
+To start I wanted to find the mean lifeExp of each continent:
 
 ``` r
-ggplot(gapminder %>% filter(country == "Canada"), aes(x = year, y = lifeExp)) + geom_line() + geom_point()
+gapminder %>%
+  group_by(continent) %>%
+  summarize(meanLife = round(mean(lifeExp), 1)) %>%
+  arrange(desc(meanLife))
 ```
 
-![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-22-1.png)
+    ## # A tibble: 5 x 2
+    ##   continent meanLife
+    ##      <fctr>    <dbl>
+    ## 1   Oceania     74.3
+    ## 2    Europe     71.9
+    ## 3  Americas     64.7
+    ## 4      Asia     60.1
+    ## 5    Africa     48.9
 
-Next I wanted to attempt to use filter and select together to plot LifeExp versus Year for Cambodia:
+Here I get a table that has filtered the gapminder dataset to show the mean lifeExp (meanLife) of each continent in descending order based on the meanLife value!
+
+Next maybe I want to look at the variables but only for specific countries in a specific year:
 
 ``` r
-filter(gapminder, country == c("Cambodia")) %>%select(year, lifeExp) %>%ggplot(aes(x=year, y=lifeExp))+ geom_line() + geom_point()
+gapminder %>%
+  filter(country %in% c("Sweden", "Norway", "Switzerland"), year == 2002)
+```
+
+    ## # A tibble: 3 x 6
+    ##       country continent  year lifeExp     pop gdpPercap
+    ##        <fctr>    <fctr> <int>   <dbl>   <int>     <dbl>
+    ## 1      Norway    Europe  2002   79.05 4535591  44683.98
+    ## 2      Sweden    Europe  2002   80.04 8954175  29341.63
+    ## 3 Switzerland    Europe  2002   80.62 7361757  34480.96
+
+Now What if we tried incorporating these dyplyr function with ggplot!
+
+Say I only wanted the LifeExp versus year for Canada I could filter this:
+
+``` r
+ggplot(gapminder %>% 
+         filter(country == "Canada"), aes(x = year, y = lifeExp)) + geom_line() + geom_point()
 ```
 
 ![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-23-1.png)
 
+Next I wanted to attempt to use filter and select together to plot LifeExp versus Year for Cambodia:
+
+``` r
+filter(gapminder, country == c("Cambodia")) %>%
+  select(year, lifeExp) %>%
+  ggplot(aes(year, lifeExp)) + geom_line() + geom_point(colour="magenta")
+```
+
+![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-24-1.png)
+
 Again you see a drastic drop in LifeExp around 1975, again around the time this country was experiencing a civil war.
+
+Piping in a very powerful way to string together many functions.
+
+#### We Survived!
+
+Reflections on This Assignment
+------------------------------
+
+Due to be a serious newcomer to this world of Stats I decided to stop this assignment here and not dive into the "I want to do more" section.
+
+This assignment challenged me a lot and I spent a long time sifting through all of the tutorials to wrap my head around the proper use of different functions.
+
+I feel as though it was a big step up from Assignment 1, but this may just be for me!
+
+It took me a long time to figure out the order of things and to be honest I would love to hear your feedback on my ordering.
+
+I enjoyed working with ggplot2 a lot because it is a great visual tool an could see how the different functions altered the graph. This helped me understand a lot.
