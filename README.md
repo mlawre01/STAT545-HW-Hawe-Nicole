@@ -1,17 +1,27 @@
-# STAT545-hw01-Hawe-Nicole
-Homework Submission
+***
+# Welcome to the STAT545 Homework Repo for Nicole Hawe
+***
 
 
 ##Overview
 
-This readme file was created for Stat545 Homework 1. It belongs to Nicole Hawe, a second year Grad student in Biochemistry. 
+This readme file was created for Stat545 Homework 1. It belongs to Nicole Hawe, a second year Grad student in Biochemistry. I use yeast as a model organism to study gene regulation, specifically at the transcriptional level!
 
 **Warning: I'm a Stats newbie**
 *But I'm excited to learn all I can in this class* 
 
+***
+### My Homework So Far
+***
+[Homework Assignment 1](https://github.com/nicolehawe/STAT545-HW-Hawe-Nicole/tree/master/HW01)
+
+[Homework Assignment 2](https://github.com/nicolehawe/STAT545-HW-Hawe-Nicole/tree/master/HW02)
+
+
+
 Find all the info you need about the class at [link](http://stat545.com/index.html)
 
-# How Hw01 Edits were executed
+#### How Hw01 Edits were executed
 
 - I when to github and created a new Repo
 - I decided to edit my Readme locally
@@ -21,7 +31,7 @@ Find all the info you need about the class at [link](http://stat545.com/index.ht
 - I then saved, went over to the Git tab, pulled from the repo, then committed my edits, and pushed them to my Repo 
 - I checked these edits online via Github
 
-## R Markdown Section of Hw01
+#### R Markdown Section of Hw01
 
 - I opened the R markdown file started in class on Thursday Sept 14
 - I made a few edits to the headers and cleaned the document up by deleting some additional notes on R markdown
