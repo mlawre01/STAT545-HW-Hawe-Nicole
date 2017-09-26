@@ -147,4 +147,5 @@ A quick plot can sometimes help though!
 ```{r}
 hist(gapminder$lifeExp)
 ```
+[](http://127.0.0.1:45172/chunk_output/s/E9093D63/coy7i5jzi3gi0/000002.png)
 
