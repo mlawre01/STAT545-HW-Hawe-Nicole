@@ -370,12 +370,12 @@ Piping in a very powerful way to string together many functions.
 Reflections on This Assignment
 ------------------------------
 
-Due to be a serious newcomer to this world of Stats I decided to stop this assignment here and not dive into the "I want to do more" section.
+Due to being a serious newcomer to the world of Stats, I decided to stop this assignment here and not dive into the "I want to do more" section.
 
 This assignment challenged me a lot and I spent a long time sifting through all of the tutorials to wrap my head around the proper use of different functions.
 
 I feel as though it was a big step up from Assignment 1, but this may just be for me!
 
-It took me a long time to figure out the order of things and to be honest I would love to hear your feedback on my ordering.
+It took me a long time to figure out the order of functions for example when to use "%&lt;%" and when just a "+", to be honest I'm not 100% sure if I actually did it correct, and I would love to hear your feedback on my ordering.
 
-I enjoyed working with ggplot2 a lot because it is a great visual tool an could see how the different functions altered the graph. This helped me understand a lot.
+I enjoyed working with ggplot2 a lot because it is a great visual tool and it helped me undestand functions when I could actually see the results changing on a graph!
