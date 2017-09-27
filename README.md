@@ -19,7 +19,7 @@ This readme file was created for Stat545 Homework 1. It belongs to Nicole Hawe, 
 
 
 
-Find all the info you need about the class at [link](http://stat545.com/index.html)
+Find all the info you need about the class at this [link](http://stat545.com/index.html)
 
 #### How Hw01 Edits were executed
 
