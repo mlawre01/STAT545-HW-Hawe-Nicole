@@ -271,7 +271,7 @@ hist(gapminder$gdpPercap)
 
 ![](Exploration_into_Gapminder_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-17-1.png)
 
-ALso just to refresh your memory a histogram of LifeExp
+Also just to refresh your memory a histogram of LifeExp
 
 ``` r
 hist(gapminder$lifeExp)
@@ -365,12 +365,86 @@ Again you see a drastic drop in LifeExp around 1975, again around the time this 
 
 Piping in a very powerful way to string together many functions.
 
+I Want to Do More
+-----------------
+
+I am going to explore this a little. It begins with the code below and wants you to see whether it is achieving the results the person wants.
+
+``` r
+filter(gapminder, country == c("Rwanda", "Afghanistan"))
+```
+
+    ## # A tibble: 12 x 6
+    ##        country continent  year lifeExp      pop gdpPercap
+    ##         <fctr>    <fctr> <int>   <dbl>    <int>     <dbl>
+    ##  1 Afghanistan      Asia  1957  30.332  9240934  820.8530
+    ##  2 Afghanistan      Asia  1967  34.020 11537966  836.1971
+    ##  3 Afghanistan      Asia  1977  38.438 14880372  786.1134
+    ##  4 Afghanistan      Asia  1987  40.822 13867957  852.3959
+    ##  5 Afghanistan      Asia  1997  41.763 22227415  635.3414
+    ##  6 Afghanistan      Asia  2007  43.828 31889923  974.5803
+    ##  7      Rwanda    Africa  1952  40.000  2534927  493.3239
+    ##  8      Rwanda    Africa  1962  43.000  3051242  597.4731
+    ##  9      Rwanda    Africa  1972  44.600  3992121  590.5807
+    ## 10      Rwanda    Africa  1982  46.218  5507565  881.5706
+    ## 11      Rwanda    Africa  1992  23.599  7290203  737.0686
+    ## 12      Rwanda    Africa  2002  43.413  7852401  785.6538
+
+WHen you run it you can see it produces values however it only seems to show unique values for each country. For example it only shows afghanistan for 1957 even though there is an entry for Rwanda in 1957. I believe the problem lies in how the filtering of the countries was executed. It instead needs to call upon all entries for Afghanistan and Rwanda.
+
+I believe this can be achieved in two ways:
+
+``` r
+filter(gapminder, 
+       country == "Afghanistan" |
+           country == "Rwanda")
+```
+
+    ## # A tibble: 24 x 6
+    ##        country continent  year lifeExp      pop gdpPercap
+    ##         <fctr>    <fctr> <int>   <dbl>    <int>     <dbl>
+    ##  1 Afghanistan      Asia  1952  28.801  8425333  779.4453
+    ##  2 Afghanistan      Asia  1957  30.332  9240934  820.8530
+    ##  3 Afghanistan      Asia  1962  31.997 10267083  853.1007
+    ##  4 Afghanistan      Asia  1967  34.020 11537966  836.1971
+    ##  5 Afghanistan      Asia  1972  36.088 13079460  739.9811
+    ##  6 Afghanistan      Asia  1977  38.438 14880372  786.1134
+    ##  7 Afghanistan      Asia  1982  39.854 12881816  978.0114
+    ##  8 Afghanistan      Asia  1987  40.822 13867957  852.3959
+    ##  9 Afghanistan      Asia  1992  41.674 16317921  649.3414
+    ## 10 Afghanistan      Asia  1997  41.763 22227415  635.3414
+    ## # ... with 14 more rows
+
+The "|" here esentially makes it so the country can be Afghanistan or Rwanda and is more all encompassing
+
+alternatively I believe this would work:
+
+``` r
+gapminder %>% 
+  filter(country %in% c("Rwanda", "Afghanistan"))
+```
+
+    ## # A tibble: 24 x 6
+    ##        country continent  year lifeExp      pop gdpPercap
+    ##         <fctr>    <fctr> <int>   <dbl>    <int>     <dbl>
+    ##  1 Afghanistan      Asia  1952  28.801  8425333  779.4453
+    ##  2 Afghanistan      Asia  1957  30.332  9240934  820.8530
+    ##  3 Afghanistan      Asia  1962  31.997 10267083  853.1007
+    ##  4 Afghanistan      Asia  1967  34.020 11537966  836.1971
+    ##  5 Afghanistan      Asia  1972  36.088 13079460  739.9811
+    ##  6 Afghanistan      Asia  1977  38.438 14880372  786.1134
+    ##  7 Afghanistan      Asia  1982  39.854 12881816  978.0114
+    ##  8 Afghanistan      Asia  1987  40.822 13867957  852.3959
+    ##  9 Afghanistan      Asia  1992  41.674 16317921  649.3414
+    ## 10 Afghanistan      Asia  1997  41.763 22227415  635.3414
+    ## # ... with 14 more rows
+
 #### We Survived!
 
 Reflections on This Assignment
 ------------------------------
 
-Due to being a serious newcomer to the world of Stats, I decided to stop this assignment here and not dive into the "I want to do more" section.
+Due to being a serious newcomer to the world of Stats, I decided to explore a little into the "I want to do more" section but decided to end it after the first part.
 
 This assignment challenged me a lot and I spent a long time sifting through all of the tutorials to wrap my head around the proper use of different functions.
 
