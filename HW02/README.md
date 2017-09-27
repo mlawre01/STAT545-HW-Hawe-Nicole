@@ -17,6 +17,7 @@ The overall flow of this homework assignment was:
 - Reflections regarding this assignment
 
 
+This explorationg into Gapminder can be found [here](STAT545-HW-Hawe-Nicole/HW02/Exploration_into_Gapminder.md) 
 
 
 **I hope you find this page informative and interesting**
