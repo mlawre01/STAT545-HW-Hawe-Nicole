@@ -3,7 +3,7 @@
 ***
 
 
-##Overview
+## Overview
 
 This readme file was created for Stat545 Homework 1. It belongs to Nicole Hawe, a second year Grad student in Biochemistry. I use yeast as a model organism to study gene regulation, specifically at the transcriptional level!
 
