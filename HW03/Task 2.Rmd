@@ -1,0 +1,36 @@
+---
+title: "Task 2"
+author: "Nicole Hawe"
+date: "October 2, 2017"
+output: github_document
+---
+
+```{r}
+library(gapminder)
+library(tidyverse)
+library(knitr)
+```
+
+*** 
+# Task 2
+***
+
+#### Look at the Spread of GDP per Capita Within the Continents
+
+```{r}
+gapminder %>%
+  group_by(continent) %>%
+  ggplot(aes(gdpPercap)) + 
+  geom_histogram() +
+  facet_wrap(~continent, scales="free")
+```
+
+Then I created a table for this however I was a bit worried about the size of a table for this sort of data:
+
+```{r}
+gapminder %>%
+  group_by(continent) %>%
+  select(continent,gdpPercap) %>%
+  kable()
+```
+
