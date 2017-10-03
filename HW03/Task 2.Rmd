@@ -9,6 +9,7 @@ output: github_document
 library(gapminder)
 library(tidyverse)
 library(knitr)
+library(kableExtra)
 ```
 
 *** 
@@ -31,6 +32,8 @@ Then I created a table for this however I was a bit worried about the size of a 
 gapminder %>%
   group_by(continent) %>%
   select(continent,gdpPercap) %>%
-  kable()
+  kable("html") %>% 
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
+
 ```
 
