@@ -1,0 +1,53 @@
+---
+title: "Task 1"
+author: "Nicole Hawe"
+date: "October 2, 2017"
+output: github_document
+---
+
+```{r}
+library(gapminder)
+library(tidyverse)
+library(knitr)
+library(dplyr)
+library(reshape2)
+library(grid)
+```
+
+***
+# Task 1
+***
+
+
+#### Find the Maximum and Minimum GDP per Capita for all Continents
+
+```{r}
+n1 <- gapminder %>%
+  group_by(continent) %>%
+  summarize(max_gdp = max(gdpPercap), min_gdp = min(gdpPercap))
+n1
+```
+
+
+Here I simply got a summarize output for a table but I wanted to explore table options using knitr:
+
+Using the code found [here](http://stat545.com/hw03_dplyr-and-more-ggplot2.html)
+
+
+
+```{r results = 'asis'}
+knitr::kable(n1)
+```
+
+
+Next I wanted some visual representation of these stats:
+
+```{r}
+ggplot(n1,aes(x=continent,y=max_gdp)) + geom_bar(stat="identity")
+```
+
+
+```{r}
+ggplot(n1,aes(x=continent,y=min_gdp)) + geom_bar(stat="identity")
+```
+
