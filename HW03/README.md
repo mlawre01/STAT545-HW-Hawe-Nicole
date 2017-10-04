@@ -11,6 +11,8 @@ The overall goal of this homework assignment was to get us to use both dyplyr an
 
 I decided to do something a little different with the organization of this assignment. Since there were a number of tasks thaat required quite a bit of coding, I broke each task down into it's own file, and provided links at the bottom of each task page to the next. 
 
+#### Start the homework here with [Task 1](https://github.com/nicolehawe/STAT545-HW-Hawe-Nicole/blob/master/HW03/Task_1.md)
+
 ### The Tasks
 
 1. Get the maximum and minimum of GDP per capita for all continents. [Task 1](https://github.com/nicolehawe/STAT545-HW-Hawe-Nicole/blob/master/HW03/Task_1.md)
