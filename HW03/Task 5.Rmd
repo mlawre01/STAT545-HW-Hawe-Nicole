@@ -1,0 +1,56 @@
+---
+title: "Task 5"
+author: "Nicole Hawe"
+date: "October 3, 2017"
+output: html_document
+---
+
+```{r}
+library(gapminder)
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+```
+
+#### Report countries with low life expectancy over time by continent. Then determine how many countries on each continent have a life expectancy less than this benchmark, for each year.
+
+
+Okay I found this quite challenging:
+
+```{r}
+n7 <- gapminder %>%
+  filter(lifeExp<35) %>%
+  arrange(year) 
+kable(head(n7), format="markdown")
+
+# I decided to randomly choose a life expectancy lower than 35
+  
+```
+Then to plot this:
+
+```{r}
+n7 %>% 
+  ggplot(aes(year,lifeExp, group=country,color=continent)) + 
+    geom_point(size=3)+
+  ggtitle("Countries with Life Expectancy Below 35 per Year")+
+  theme(plot.title = element_text(hjust=0.5))
+```
+```{r}
+n8 <- gapminder %>%
+  filter(lifeExp<35) %>%
+  group_by(year) 
+
+n9 <-  summarize(n8, number_countries=length(year))
+kable(n9)
+
+
+# Here length is representing the number of countries 
+```
+
+```{r}
+ggplot(n8,aes(year,fill=continent)) +
+  geom_histogram()+
+  ggtitle("Abundance of Countries with Life Expectancy Below 35 per Year")+
+  theme(plot.title = element_text(hjust=0.5))
+```
+
