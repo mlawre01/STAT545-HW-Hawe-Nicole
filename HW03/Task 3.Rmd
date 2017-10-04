@@ -41,7 +41,6 @@ Then I went on to visualize this trimmed mean life expectancy using a line graph
 ```{r}
 ggplot(n5, aes(x=year, y=trim_mean_lifeExp)) +
   geom_point(colour="purple", size=3) +
-  geom_line()+
   labs(x="Year", y="Trimmed Mean LifeExp")+
   ggtitle("Trimmed Mean Life Expectancy") +
   theme(plot.title = element_text(hjust=0.5))
