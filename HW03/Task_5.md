@@ -29,7 +29,7 @@ library(kableExtra)
 
 #### Report countries with low life expectancy over time by continent. Then determine how many countries on each continent have a life expectancy less than this benchmark, for each year.
 
-Okay I found this quite challenging:
+Okay I found this question quite challenging, but tried to interpret it best I could and just wanted to attempt it for fun, and learning purposes:
 
 ``` r
 n7 <- gapminder %>%
@@ -82,7 +82,7 @@ kable(n9)
 |  1992|                  1|
 
 ``` r
-# Here length is representing the number of countries 
+# Here length is representing the number of countries in each year with life expectancy lower than 35 years old
 ```
 
 ``` r
@@ -95,3 +95,5 @@ ggplot(n8,aes(year,fill=continent)) +
     ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 
 ![](Task_5_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-5-1.png)
+
+Move on to [Task 6](https://github.com/nicolehawe/STAT545-HW-Hawe-Nicole/blob/master/HW03/Task_6.md)
