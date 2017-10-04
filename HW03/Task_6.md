@@ -38,7 +38,7 @@ filter(gapminder, country == c("Rwanda")) %>%
 
 ![](Task_6_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-2-1.png)
 
-You can see this insane drop in LIfe expectancy just before the 90's and after. With some researching it turns out this is during the time of the civil war in this country.
+You can see this insane drop in Life expectancy just before the 90's until around 1995. With some researching it turns out this is during the time of the civil war in this country.
 
 Check out the Wikipedia article [here](https://en.wikipedia.org/wiki/Rwandan_Civil_War)
 
@@ -64,3 +64,5 @@ filter(gapminder, country == c("Rwanda")) %>%
 |  1997|   36.087|
 |  2002|   43.413|
 |  2007|   46.242|
+
+Move on to my attempt at [But I Want To Do More](https://github.com/nicolehawe/STAT545-HW-Hawe-Nicole/blob/master/HW03/But_I_Want_To_Do_More.md)
