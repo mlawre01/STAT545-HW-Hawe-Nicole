@@ -46,7 +46,7 @@ library(gridExtra)
 
 #### Layout Stretch Goal
 
-Okay so I had trouble using the code found [here](http://gist.github.com/jennybc/e9e9aba6ba18c72cec26) SO I found another was using [gridExtra](https://cran.r-project.org/web/packages/gridExtra/gridExtra.pdf)
+Okay so I had trouble using the code found [here](http://gist.github.com/jennybc/e9e9aba6ba18c72cec26) So I found another way using the package [gridExtra](https://cran.r-project.org/web/packages/gridExtra/gridExtra.pdf)
 
 So remember from Task 3 we had:
 
@@ -88,7 +88,7 @@ p2
 
 ![](But_I_Want_To_Do_More_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-3-1.png)
 
-then we need to define a tableGrob for grid extra:
+Now in order to get them side by side we need to define a tableGrob for gridExtra:
 
 ``` r
 t1a <- tableGrob(t1)
@@ -97,11 +97,11 @@ grid.arrange(p2, t1a, nrow=1)
 
 ![](But_I_Want_To_Do_More_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-4-1.png)
 
-Then the second part of this
+This does not look fantastic but is better than nothing. I'm looking forward to hearing other suggestions!
 
 #### Table Stretch Goals
 
-I decided to venture into pander to make a different style of table
+I decided to venture into pander to make a different style of table:
 
 ``` r
 library(pander)
@@ -176,6 +176,8 @@ pander(n5)
 </tbody>
 </table>
 
-There this gives another table making option!
+There this gives another table making option, however I didn't go too crazy with customization, I'll leave that for the future.
 
 I chose pander with the help found [here](https://twitter.com/polesasunder/status/464132152347475968)
+
+Back to My [HW3 Folder](https://github.com/nicolehawe/STAT545-HW-Hawe-Nicole/tree/master/HW03)
