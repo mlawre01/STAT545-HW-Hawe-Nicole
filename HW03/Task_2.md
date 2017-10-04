@@ -3,6 +3,8 @@ Task 2
 Nicole Hawe
 October 2, 2017
 
+Of course we load the needed packages:
+
 ``` r
 library(gapminder)
 library(tidyverse)
@@ -43,7 +45,7 @@ gapminder %>%
 
 ![](Task_2_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-2-1.png)
 
-Then I created a table however due to the size of a table for this sort of data I decided to only show part of it using the "head" function:
+Then I created a table however, due to the size of a table for this amount of data I decided to only show part of it using the "head" function:
 
 ``` r
 t3 <- gapminder %>%
@@ -63,7 +65,7 @@ kable(t4)
 | Asia      |   739.9811|
 | Asia      |   786.1134|
 
-I could also interpret the spread to mean the mean GdpPerCap with the standard deviation for each continent so I did that as well:
+I could also interpret the spread as the mean GdpPerCap with the standard deviation for each continent so I did that as well:
 
 ``` r
 n4 <- gapminder %>% 
@@ -91,3 +93,5 @@ gapminder %>%
 ```
 
 ![](Task_2_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-5-1.png)
+
+Move on to [Task 3](https://github.com/nicolehawe/STAT545-HW-Hawe-Nicole/blob/master/HW03/Task_3.md)
