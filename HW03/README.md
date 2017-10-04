@@ -26,14 +26,18 @@ I decided to do something a little different with the organization of this assig
 6. Find countries with interesting stories. Open-ended and, therefore, hard. Promising but unsuccessful attempts are encouraged. This will generate interesting questions to follow up on in class.[Task 6](https://github.com/nicolehawe/STAT545-HW-Hawe-Nicole/blob/master/HW03/Task_6.md)
 
 Then additional "I Want To Do More": [My Attempt](https://github.com/nicolehawe/STAT545-HW-Hawe-Nicole/blob/master/HW03/But_I_Want_To_Do_More.md)
+
 - Layout stretch goal: get table and figure side-by-side. 
+
 - Table stretch goal: there are some really nice fancy table helper packages.
 
 Let me know what you think!
 
 ### Resources
 First of all the class notes were essential found [here](http://stat545.com/syllabus.html)
+
 Some gridExtra help [here](https://www.r-bloggers.com/extra-extra-get-your-gridextra/)
+
 Various other task specific links can be found in the files!
 
 ### Reflections/Thoughts
