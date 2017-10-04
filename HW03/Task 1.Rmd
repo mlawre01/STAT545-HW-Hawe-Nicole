@@ -11,6 +11,7 @@ Before we begin I loaded the necessary packages:
 library(gapminder)
 library(tidyverse)
 library(knitr)
+#to create a table with kable
 library(dplyr)
 library(stringr)
 
@@ -27,17 +28,15 @@ Keeping that in mind, I found the min and max GdpPercap for each continent as fo
 n1 <- gapminder %>%
   group_by(continent) %>%
   summarize(max_gdp = max(gdpPercap), min_gdp = min(gdpPercap))
+#first grouping by continent then summarizing
 kable(n1)
 ```
 
 
-I explored making the table a bit nicer using the knitr package and the kabe function. I found this code [here](http://stat545.com/hw03_dplyr-and-more-ggplot2.html)
+I explored making the table a bit nicer using the knitr package and the kable function. I found this code [here](http://stat545.com/hw03_dplyr-and-more-ggplot2.html)
 
 
-
-
-Next I wanted some visual representation of these stats so firstly I separated both the min and max in bar graphs:
-
+Next I wanted some visual representation of these stats so firstly I separated both the min and max gdpPercap for each continent in bar graphs:
 
 
 ```{r}
@@ -68,3 +67,5 @@ b <- gapminder %>%
 b
 
 ```
+
+Move on to [Task 2](https://github.com/nicolehawe/STAT545-HW-Hawe-Nicole/blob/master/HW03/Task_2.md)
