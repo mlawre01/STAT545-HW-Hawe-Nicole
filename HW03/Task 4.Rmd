@@ -1,0 +1,36 @@
+---
+title: "Task 4"
+author: "Nicole Hawe"
+date: "October 3, 2017"
+output: html_document
+---
+
+***
+# Task 4
+***
+
+#### How is life expectancy changing over time on different continents?
+
+
+```{r}
+gapminder %>% 
+  group_by(continent, year) %>% 
+  summarize(mean_lifeExp = mean(lifeExp)) %>% 
+  select(continent, year, mean_lifeExp) %>% 
+  arrange(year) %>% 
+kable()
+  
+```
+
+
+```{r}
+gapminder %>%
+  group_by(continent) %>%
+  ggplot(aes(year,lifeExp,color=continent)) +
+  geom_smooth(method="lm")
+```
+
+```{r}
+
+```
+

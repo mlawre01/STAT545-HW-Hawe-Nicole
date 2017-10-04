@@ -1,0 +1,27 @@
+---
+title: "Task 3"
+author: "Nicole Hawe"
+date: "October 3, 2017"
+output: github_document
+---
+
+***
+# Task 3
+***
+
+
+#### Compute a trimmed mean of life expectancy for different years. Or a weighted mean, weighting by population. Just try something other than the plain vanilla mean.
+
+
+```{r}
+gapminder %>% 
+  group_by(year) %>% 
+  summarise(trim_mean_lifeExp = mean(lifeExp, trim=0.01)) %>% 
+  arrange(year) %>% 
+  select(year, trim_mean_lifeExp)
+
+  
+  
+  
+```
+

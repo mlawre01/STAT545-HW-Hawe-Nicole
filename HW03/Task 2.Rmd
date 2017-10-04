@@ -12,28 +12,50 @@ library(knitr)
 library(kableExtra)
 ```
 
-*** 
-# Task 2
-***
 
 #### Look at the Spread of GDP per Capita Within the Continents
 
+I was a little bit unclear on what was wanted with this question so to begin I used all of the data to plot the complete spread of GdpPerCap for all the continents: 
+
 ```{r}
 gapminder %>%
   group_by(continent) %>%
-  ggplot(aes(gdpPercap)) + 
-  geom_histogram() +
+  ggplot(aes(gdpPercap, fill=continent)) + 
+  geom_histogram(color="black") +
   facet_wrap(~continent, scales="free")
 ```
 
-Then I created a table for this however I was a bit worried about the size of a table for this sort of data:
+Then I created a table however due to the size of a table for this sort of data I decided to only show part of it using the "head" function:
+
+```{r}
+t3 <- gapminder %>%
+  group_by(continent) %>%
+  select(continent,gdpPercap)
+
+t4 <- head(t3)
+kable(t4)
+  
+
+```
+
+
+I could also interpret the spread to mean the mean GdpPerCap with the standard deviation for each continent so I did that as well:
+
+```{r}
+n4 <- gapminder %>% 
+  group_by(continent) %>% 
+  summarize(mean_gdp=mean(gdpPercap),sd_gdp=sd(gdpPercap))
+kable(n4,format='markdown')
+```
+
+This data can then be visulaized with a box plot:
 
 ```{r}
 gapminder %>%
-  group_by(continent) %>%
-  select(continent,gdpPercap) %>%
-  kable("html") %>% 
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
-
+  ggplot(aes(x=continent, y=gdpPercap)) + 
+  geom_boxplot(aes(group=continent, colour=continent, fill=continent),alpha=0.5)+
+  ggtitle("GDP Per Capita Per Continent")+
+  theme(plot.title = element_text(hjust = 0.5))
+  
 ```
 

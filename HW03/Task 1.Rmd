@@ -5,49 +5,66 @@ date: "October 2, 2017"
 output: github_document
 ---
 
+
+Before we begin I loaded the necessary packages: 
 ```{r}
 library(gapminder)
 library(tidyverse)
 library(knitr)
 library(dplyr)
-library(reshape2)
-library(grid)
-```
+library(stringr)
 
-***
-# Task 1
-***
+```
 
 
 #### Find the Maximum and Minimum GDP per Capita for all Continents
+
+Last Homework assignment we discovered that the gapminder component GdpPercap was a *number* and Continent was a *double*
+
+Keeping that in mind, I found the min and max GdpPercap for each continent as follows:
 
 ```{r}
 n1 <- gapminder %>%
   group_by(continent) %>%
   summarize(max_gdp = max(gdpPercap), min_gdp = min(gdpPercap))
-n1
+kable(n1)
 ```
 
 
-Here I simply got a summarize output for a table but I wanted to explore table options using knitr:
-
-Using the code found [here](http://stat545.com/hw03_dplyr-and-more-ggplot2.html)
+I explored making the table a bit nicer using the knitr package and the kabe function. I found this code [here](http://stat545.com/hw03_dplyr-and-more-ggplot2.html)
 
 
 
-```{r results = 'asis'}
-knitr::kable(n1)
-```
 
+Next I wanted some visual representation of these stats so firstly I separated both the min and max in bar graphs:
 
-Next I wanted some visual representation of these stats:
-
-```{r}
-ggplot(n1,aes(x=continent,y=max_gdp)) + geom_bar(stat="identity")
-```
 
 
 ```{r}
-ggplot(n1,aes(x=continent,y=min_gdp)) + geom_bar(stat="identity")
+ggplot(n1,aes(x=continent,y=max_gdp, fill=continent)) + 
+  geom_bar(stat="identity", color="black")+
+  ggtitle("Max GdpPerCap Per Continent")+
+  theme(plot.title = element_text(hjust = 0.5))
 ```
 
+
+```{r}
+ggplot(n1,aes(x=continent,y=max_gdp, fill=continent)) + 
+  geom_bar(stat="identity", color="black")+
+  ggtitle("Min GdpPerCap Per Continent")+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+Then I wanted to explore a graph with both the Min and Max GdpPerCap for each continent in a scatterplot:
+
+```{r}
+b <- gapminder %>%
+  group_by(continent) %>%
+  filter(gdpPercap == max(gdpPercap) | gdpPercap == min(gdpPercap)) %>%
+  ggplot(aes(x= continent, y= gdpPercap, colour= gdpPercap>15000)) +
+  geom_point(show.legend=FALSE, size = 3)+
+  ggtitle("Min and Max GdpPerCap Per Continent")+
+  theme(plot.title=element_text(hjust=0.5))
+b
+
+```
