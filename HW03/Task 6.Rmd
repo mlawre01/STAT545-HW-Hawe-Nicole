@@ -9,10 +9,11 @@ output: github_document
 ```{r}
 library(gapminder)
 library(tidyverse)
+library(knitr)
 ```
 
 
-#### Find a Cuntry WIth an Interesting Story
+#### Find a Country With an Interesting Story
 
 So for this portion I was curious about life expectancy and why some countries suddenly drop in life expectancy at certain points in time.
 
@@ -27,4 +28,13 @@ filter(gapminder, country == c("Rwanda")) %>%
 You can see this insane drop in LIfe expectancy just before the 90's and after. With some researching it turns out this is during the time of the civil war in this country.
 
 Check out the Wikipedia article [here](https://en.wikipedia.org/wiki/Rwandan_Civil_War)
+
+Below is the data in a table used to generate the figure above:
+
+
+```{r}
+filter(gapminder, country == c("Rwanda")) %>%
+  select(year, lifeExp) %>%
+  kable()
+```
 
