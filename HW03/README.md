@@ -42,8 +42,8 @@ Various other task specific links can be found in the files!
 
 ### Reflections/Thoughts
 
-I found this particular homework assignment to be quite overwhelming at first, will all these tasks and sort of broad guidelines. Once I started tackling them I realized that I am slowing starting to understand the power of dyplyr and ggplot, which was very reassuring. 
-I am starting to really like how far you can go customizing things in ggplot, and really enjoy the visual reward of those coding efforts!
+I found this particular homework assignment to be quite overwhelming at first, will all these tasks and sort of broad guidelines. Once I started tackling them I realized that I am slowly starting to understand the power of dyplyr and ggplot, which was very reassuring. 
+I am starting to really like how far you can go customizing things in ggplot, and enjoy the visual reward of those coding efforts!
 
 I spent a long time trying to figure out how the heck to put a table and graph side by side and still was not successfull with the code found [here](https://gist.github.com/jennybc/e9e9aba6ba18c72cec26) I would really love a solution!
 
