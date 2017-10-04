@@ -2,7 +2,7 @@
 title: "Task 5"
 author: "Nicole Hawe"
 date: "October 3, 2017"
-output: html_document
+output: github_document
 ---
 
 ```{r}

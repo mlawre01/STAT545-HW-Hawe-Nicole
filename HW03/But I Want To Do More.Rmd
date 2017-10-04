@@ -1,0 +1,71 @@
+---
+title: "But I Want To Do More"
+author: "Nicole Hawe"
+date: "October 3, 2017"
+output: github_document
+---
+
+```{r}
+library(gapminder)
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+library(gridExtra)
+# loaded grid extra to help put table and figure side by side
+```
+
+#### Layout Stretch Goal
+
+Okay so I had trouble using the code found [here](http://gist.github.com/jennybc/e9e9aba6ba18c72cec26)
+SO I found another was using [gridExtra](https://cran.r-project.org/web/packages/gridExtra/gridExtra.pdf)
+
+
+
+So remember from Task 3 we had:
+```{r}
+n5 <- gapminder %>% 
+  group_by(year) %>% 
+  summarise(trim_mean_lifeExp = mean(lifeExp, trim=0.25)) %>% 
+  arrange(year) %>% 
+  select(year, trim_mean_lifeExp)
+
+t1 <- kable(n5)
+t1
+
+```
+Also the accompanying plot:
+```{r}
+p2 <- ggplot(n5, aes(x=year, y=trim_mean_lifeExp)) +
+  geom_point(colour="purple", size=3) +
+  labs(x="Year", y="Trimmed Mean LifeExp")+
+  ggtitle("Trimmed Mean Life Expectancy") +
+  theme(plot.title = element_text(hjust=0.5))
+p2
+```
+
+
+then we need to define a tableGrob for grid extra:
+
+```{r}
+t1a <- tableGrob(t1)
+grid.arrange(p2, t1a, nrow=1)
+```
+
+Then the second part of this
+
+#### Table Stretch Goals
+
+I decided to venture into pander to make a different style of table
+
+```{r}
+
+library(pander)
+```
+
+```{r}
+pander(n5)
+```
+There this gives another table making option!
+
+I chose pander with the help found [here](https://twitter.com/polesasunder/status/464132152347475968)
+
