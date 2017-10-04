@@ -30,9 +30,6 @@ n5 <- gapminder %>%
 kable(n5)
 
 
-
-  
-  
   
 ```
 
