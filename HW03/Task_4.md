@@ -54,6 +54,8 @@ kable(head(n6),format='markdown')
 # I used head here to give a glimpse of the quite large table produced
 ```
 
+I then plotted using a line graph with a linear regression:
+
 ``` r
 n6 %>% 
    ggplot(aes(year,mean_lifeExp,color=continent)) +
@@ -63,3 +65,5 @@ n6 %>%
 ```
 
 ![](Task_4_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-3-1.png)
+
+Move on to [Task 5](https://github.com/nicolehawe/STAT545-HW-Hawe-Nicole/blob/master/HW03/Task_5.md)
