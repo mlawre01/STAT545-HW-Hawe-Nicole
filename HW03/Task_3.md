@@ -38,7 +38,7 @@ n5 <- gapminder %>%
   arrange(year) %>% 
   select(year, trim_mean_lifeExp)
 
-# I grouped by year, and then used summarize not mutate in order to collaspe the years into one row not add columns with the trimmed mean but having multiple years
+# I grouped by year, and then used summarize not mutate in order to collaspe the years into one row not add columns with the trimmed mean but having multiple years with that.
 
 kable(n5)
 ```
@@ -58,7 +58,7 @@ kable(n5)
 |  2002|             68.30965|
 |  2007|             69.68886|
 
-Then I went on to visualize this trimmed mean life expectancy using a line graph:
+Then I went on to visualize this trimmed mean life expectancy using a scatter plot:
 
 ``` r
 ggplot(n5, aes(x=year, y=trim_mean_lifeExp)) +
@@ -69,3 +69,5 @@ ggplot(n5, aes(x=year, y=trim_mean_lifeExp)) +
 ```
 
 ![](Task_3_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-3-1.png)
+
+Move on to [task 4](https://github.com/nicolehawe/STAT545-HW-Hawe-Nicole/blob/master/HW03/Task_4.md)

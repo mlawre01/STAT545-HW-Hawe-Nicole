@@ -5,6 +5,8 @@ date: "October 3, 2017"
 output: github_document
 ---
 
+
+
 ```{r}
 library(gapminder)
 library(tidyverse)
@@ -25,7 +27,7 @@ n5 <- gapminder %>%
   arrange(year) %>% 
   select(year, trim_mean_lifeExp)
 
-# I grouped by year, and then used summarize not mutate in order to collaspe the years into one row not add columns with the trimmed mean but having multiple years
+# I grouped by year, and then used summarize not mutate in order to collaspe the years into one row not add columns with the trimmed mean but having multiple years with that.
 
 kable(n5)
 
@@ -33,7 +35,7 @@ kable(n5)
   
 ```
 
-Then I went on to visualize this trimmed mean life expectancy using a line graph:
+Then I went on to visualize this trimmed mean life expectancy using a scatter plot:
 
 ```{r}
 ggplot(n5, aes(x=year, y=trim_mean_lifeExp)) +
@@ -42,5 +44,7 @@ ggplot(n5, aes(x=year, y=trim_mean_lifeExp)) +
   ggtitle("Trimmed Mean Life Expectancy") +
   theme(plot.title = element_text(hjust=0.5))
 ```
+
+Move on to [task 4](https://github.com/nicolehawe/STAT545-HW-Hawe-Nicole/blob/master/HW03/Task_4.md)
 
 
