@@ -4,24 +4,10 @@ Nicole Hawe
 October 10, 2017
 
 ``` r
-library(gapminder)
-library(tidyverse)
-```
-
-    ## Loading tidyverse: ggplot2
-    ## Loading tidyverse: tibble
-    ## Loading tidyverse: tidyr
-    ## Loading tidyverse: readr
-    ## Loading tidyverse: purrr
-    ## Loading tidyverse: dplyr
-
-    ## Conflicts with tidy packages ----------------------------------------------
-
-    ## filter(): dplyr, stats
-    ## lag():    dplyr, stats
-
-``` r
-library(knitr)
+suppressPackageStartupMessages(library(gapminder))
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(knitr))
 ```
 
 1. Reshape
@@ -29,7 +15,9 @@ library(knitr)
 
 #### Activity \#3
 
-*Compute the median of life expectancy for all possible combinations of continent and year. Then Reshape that to have one row per year and one variable for each continent. Or the other way around: one row per continent and one variable per year. Use knitr::kable() to make these tables look pretty in your rendered homework. Is there a plot that is easier to make with the data in this shape versis the usual form? If so (or you think so), try it! Reflect.*
+*Compute the median of life expectancy for all possible combinations of continent and year. Then Reshape that to have one row per year and one variable for each continent. Or the other way around: one row per continent and one variable per year. Use knitr::kable() to make these tables look pretty in your rendered homework. Is there a plot that is easier to make with the data in this shape versus the usual form? If so (or you think so), try it! Reflect.*
+
+I found this [cheatsheet](https://github.com/trinker/tidyr_in_a_nutshell) very useful for this portion of the assignment!
 
 ``` r
 t1 <- gapminder %>% 
@@ -55,11 +43,11 @@ t1 <- gapminder %>%
 |  2002|  51.2355|    72.047|  71.028|  77.5365|  79.7400|
 |  2007|  52.9265|    72.899|  72.396|  78.6085|  80.7195|
 
-Now my data is in the wide format, I tried to create a plot but had a lot of trouble. With some research I came to the conclusion that although wide format may be easier to view in a table, the long format is the best for plotting. In this wide format you would have to essentialy plot each continent as a 'y' value. This is what I have done below:
+Now my data is in the wide format, I tried to create a plot but had a lot of trouble. With some research I came to the conclusion that although wide format may be easier to view in a table, the long format is the best for plotting. In this wide format you would have to plot each continent as a 'y' value. This is what I have done below:
 
 ``` r
 cols <- c( "c1" = "red", "c2" = "blue", "c3"="purple", "c4"="green", "c5"="yellow")
-#this was to just establish my colors off the bat, to save a lot of writing
+#this was to just establish my colors in the beginning
 ```
 
 ``` r
@@ -105,7 +93,7 @@ So now let me put this data in the long format and attempt graphing:
 |  1972| Africa    |          47.0315|
 |  1977| Africa    |          49.2725|
 
-So above I transformed data into wide using spread and then back to long using gather. Now I can plot thins long data:
+So above I transformed data into wide using spread and then back to long using gather. Now I can plot this long data:
 
 ``` r
 p2 <- t2 %>%
@@ -154,7 +142,7 @@ kable(ds1)
 | Europe    |  77.17460|    19405373|  23383.107|
 | Oceania   |  80.22975|    12001194|  28374.483|
 
-Now I'll create a second smaller dataset with the continents and I'll add the coastline in kilometers and the highest point in meters of each continent. This data is courtesy of this [site](https://www.sporcle.com/games/quizace/order-the-continents-ii/results)
+Now I'll create a second smaller dataset with the continents and I'll add the coastline in kilometers and the highest point in meters of each continent. This information is courtesy of this [site](https://www.sporcle.com/games/quizace/order-the-continents-ii/results)
 
 ``` r
 continent <- c("Africa","Americas","Asia","Europe","Oceania", "Antarctica")
@@ -181,11 +169,19 @@ I want to keep in mind the two types of joins in dyplyr:
 
 1.  Mutating joins
 
-left or right\_join: join by matching rows inner\_join: joins data, retaining only rows from both data sets full\_join: joins data, retaining all values and rows
+**left or right\_join:** join by matching rows
+
+**inner\_join:** joins data, retaining only rows from both data sets
+
+**full\_join:** joins data, retaining all values and rows
 
 1.  Filtering joins
 
-semi\_join: joins all rows from one data set that have a match in a second data set anti\_join: joins all rows from one data set that do not have a match in a second data set
+**semi\_join:** joins all rows from one data set that have a match in a second data set
+
+**anti\_join:** joins all rows from one data set that do not have a match in a second data set
+
+*Please note that the only matching column for both datasets was Continent however I decided to still specify "by = continent" to get in the habit *
 
 #### Mutating Joins
 
@@ -199,14 +195,15 @@ left_join(ds1, ds2, by ="continent") %>%
     ## Warning: Column `continent` joining factors with different levels, coercing
     ## to character vector
 
-| continent    |      LifeExp|    Population|     GdpPercap|  Coastline\_kms|  Highest\_point\_m|
-|:-------------|------------:|-------------:|-------------:|---------------:|------------------:|
-| Africa       |     54.06563|      16954458|      2844.209|           30500|               5895|
-| Americas     |     73.01508|      34972879|     10145.354|          328000|               6960|
-| Asia         |     69.98118|     112329637|     11323.559|          230300|               8850|
-| Europe       |     77.17460|      19405373|     23383.107|           32000|               5642|
-| Oceania      |     80.22975|      12001194|     28374.483|           71200|               3754|
-| What would i |  t look like|  if we switch|  ed the datse|        t order?|                   |
+| continent |   LifeExp|  Population|  GdpPercap|  Coastline\_kms|  Highest\_point\_m|
+|:----------|---------:|-----------:|----------:|---------------:|------------------:|
+| Africa    |  54.06563|    16954458|   2844.209|           30500|               5895|
+| Americas  |  73.01508|    34972879|  10145.354|          328000|               6960|
+| Asia      |  69.98118|   112329637|  11323.559|          230300|               8850|
+| Europe    |  77.17460|    19405373|  23383.107|           32000|               5642|
+| Oceania   |  80.22975|    12001194|  28374.483|           71200|               3754|
+
+What would it look like if we switched the datset order?
 
 ``` r
 left_join(ds2, ds1, by = "continent") %>% 
@@ -227,14 +224,33 @@ left_join(ds2, ds1, by = "continent") %>%
 
 > You can see here that when you left join with ds1 first it leaves out Antarctica whereas with ds2 first it includes Antartica but provide NA for values not present in ds1!
 
+##### - Right\_Join
+
+``` r
+right_join(ds1, ds2, by="continent") %>% 
+  kable()
+```
+
+    ## Warning: Column `continent` joining factors with different levels, coercing
+    ## to character vector
+
+| continent  |   LifeExp|  Population|  GdpPercap|  Coastline\_kms|  Highest\_point\_m|
+|:-----------|---------:|-----------:|----------:|---------------:|------------------:|
+| Africa     |  54.06563|    16954458|   2844.209|           30500|               5895|
+| Americas   |  73.01508|    34972879|  10145.354|          328000|               6960|
+| Asia       |  69.98118|   112329637|  11323.559|          230300|               8850|
+| Europe     |  77.17460|    19405373|  23383.107|           32000|               5642|
+| Oceania    |  80.22975|    12001194|  28374.483|           71200|               3754|
+| Antarctica |        NA|          NA|         NA|           18000|               4892|
+
+> You can see that right\_join is similar to left\_join. It gives all of the columns of ds1(x) and ds2(y), for rows that are in ds2 (y).
+
 ##### - Inner\_Join
 
 ``` r
-inner_join(ds1, ds2) %>% 
+inner_join(ds1, ds2, by="continent") %>% 
 kable()
 ```
-
-    ## Joining, by = "continent"
 
     ## Warning: Column `continent` joining factors with different levels, coercing
     ## to character vector
@@ -247,18 +263,12 @@ kable()
 | Europe    |  77.17460|    19405373|  23383.107|           32000|               5642|
 | Oceania   |  80.22975|    12001194|  28374.483|           71200|               3754|
 
-``` r
-# Note that inner_join matched by the common column which was continent!
-```
-
-With this join function the order of "x" and "y" or in my case "ds1" and "ds2", does not matter because u=you will always eliminate rows not found in both sets. As you can see below:
+With this join function the order of "x" and "y" or in my case "ds1" and "ds2", does not matter because you will always eliminate rows not found in both sets. As you can see below:
 
 ``` r
-inner_join(ds2, ds1) %>% 
+inner_join(ds2, ds1, by="continent") %>% 
 kable()
 ```
-
-    ## Joining, by = "continent"
 
     ## Warning: Column `continent` joining factors with different levels, coercing
     ## to character vector
@@ -274,24 +284,23 @@ kable()
 ##### - Full\_Join
 
 ``` r
-full_join(ds1, ds2) %>% 
+full_join(ds1, ds2, by="continent") %>% 
 kable()
 ```
-
-    ## Joining, by = "continent"
 
     ## Warning: Column `continent` joining factors with different levels, coercing
     ## to character vector
 
-| continent        |      LifeExp|     Population|    GdpPercap|   Coastline\_kms|  Highest\_point\_m|
-|:-----------------|------------:|--------------:|------------:|----------------:|------------------:|
-| Africa           |     54.06563|       16954458|     2844.209|            30500|               5895|
-| Americas         |     73.01508|       34972879|    10145.354|           328000|               6960|
-| Asia             |     69.98118|      112329637|    11323.559|           230300|               8850|
-| Europe           |     77.17460|       19405373|    23383.107|            32000|               5642|
-| Oceania          |     80.22975|       12001194|    28374.483|            71200|               3754|
-| Antarctica       |           NA|             NA|           NA|            18000|               4892|
-| &gt; You can see |  the full\_j|  oin keeps all|  rows from d|  s1 and all rows|          from ds2!|
+| continent  |   LifeExp|  Population|  GdpPercap|  Coastline\_kms|  Highest\_point\_m|
+|:-----------|---------:|-----------:|----------:|---------------:|------------------:|
+| Africa     |  54.06563|    16954458|   2844.209|           30500|               5895|
+| Americas   |  73.01508|    34972879|  10145.354|          328000|               6960|
+| Asia       |  69.98118|   112329637|  11323.559|          230300|               8850|
+| Europe     |  77.17460|    19405373|  23383.107|           32000|               5642|
+| Oceania    |  80.22975|    12001194|  28374.483|           71200|               3754|
+| Antarctica |        NA|          NA|         NA|           18000|               4892|
+
+> You can see the full\_join keeps all rows from ds1 and all rows from ds2!
 
 #### Filtering Joins
 
@@ -318,11 +327,9 @@ semi_join(ds1, ds2, by = "continent") %>%
 But if we reverse the order:
 
 ``` r
-semi_join(ds2, ds1) %>% 
+semi_join(ds2, ds1, by="continent") %>% 
   kable()
 ```
-
-    ## Joining, by = "continent"
 
     ## Warning: Column `continent` joining factors with different levels, coercing
     ## to character vector
@@ -339,9 +346,11 @@ semi_join(ds2, ds1) %>%
 
 ##### - Anti\_Join
 
+Since anti\_join gives the columns of one dataset for rows that are NOT in the second dataset, I am only able to get a result for ds2 being first. This is because all of the rows in the ds1 dataset are also in ds2, therefore there are no results for the call anti\_join(ds1, ds2).
+
 ``` r
 anti_join(ds2, ds1, by = "continent") %>% 
-  knitr::kable(format = "markdown")
+  kable()
 ```
 
     ## Warning: Column `continent` joining factors with different levels, coercing
@@ -351,4 +360,56 @@ anti_join(ds2, ds1, by = "continent") %>%
 |:-----------|---------------:|------------------:|
 | Antarctica |           18000|               4892|
 
-nt join gives the columns of x for rows that are NOT in y. Because all of the rows in the old dataset are also in the new dataset, there are no results for the call anti\_join(old,new)
+Bonus: Explore the merge() Function
+-----------------------------------
+
+To begin I utilized this great [resource](http://zevross.com/blog/2014/04/30/mini-post-for-large-tables-in-r-dplyrs-function-inner_join-is-much-faster-than-merge/) to gain more knowledge about the merge function.
+
+-   Basically merge is a generic function that merges two dataframes by common columns or row names
+-   Merge is very similiar to dplyr's inner\_join but merger actually rearranges the data within the table
+-   Also merge is much slower and when working with large datsets inner\_join is the better option
+
+``` r
+ds3 <- merge(ds1, ds2) 
+  kable(ds3)
+```
+
+| continent |   LifeExp|  Population|  GdpPercap|  Coastline\_kms|  Highest\_point\_m|
+|:----------|---------:|-----------:|----------:|---------------:|------------------:|
+| Africa    |  54.06563|    16954458|   2844.209|           30500|               5895|
+| Americas  |  73.01508|    34972879|  10145.354|          328000|               6960|
+| Asia      |  69.98118|   112329637|  11323.559|          230300|               8850|
+| Europe    |  77.17460|    19405373|  23383.107|           32000|               5642|
+| Oceania   |  80.22975|    12001194|  28374.483|           71200|               3754|
+
+In this case identical to:
+
+``` r
+inner_join(ds1, ds2, by="continent") %>% 
+kable()
+```
+
+    ## Warning: Column `continent` joining factors with different levels, coercing
+    ## to character vector
+
+| continent       |      LifeExp|     Population|     GdpPercap|    Coastline\_kms|                                                                                 Highest\_point\_m|
+|:----------------|------------:|--------------:|-------------:|-----------------:|-------------------------------------------------------------------------------------------------:|
+| Africa          |     54.06563|       16954458|      2844.209|             30500|                                                                                              5895|
+| Americas        |     73.01508|       34972879|     10145.354|            328000|                                                                                              6960|
+| Asia            |     69.98118|      112329637|     11323.559|            230300|                                                                                              8850|
+| Europe          |     77.17460|       19405373|     23383.107|             32000|                                                                                              5642|
+| Oceania         |     80.22975|       12001194|     28374.483|             71200|                                                                                              3754|
+| &gt; If my colu |  mns were ou|  t of order me|  rge would re|  arrange the rows|  so that continents were in alphabetical order, unfortunately mine already were ordered this way.|
+
+Reflections
+-----------
+
+-   I found the reshape portion of this assignment to be very helpful in better understanding the format of data and why having the long format is much easier to graph
+
+-   For the second, join part I found it difficult to come up with facts to create the second dataset. I spent quite some time thinking of "cool" facts about the continents I could use to create the second dataset
+
+-   I appreciated having to work through all the different join functions with datsets I have actually created, this really helped solidify how each join functions operates.
+
+-   I think my next step is to start cleaning up my tables and get better at displaying them side by side!
+
+Back to main page of my Homework [Repo](https://github.com/nicolehawe/STAT545-HW-Hawe-Nicole)

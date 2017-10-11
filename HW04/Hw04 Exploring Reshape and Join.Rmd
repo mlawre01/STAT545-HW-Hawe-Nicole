@@ -17,7 +17,7 @@ suppressPackageStartupMessages(library(knitr))
 #### Activity #3
 
 *Compute the median of life expectancy for all possible combinations of continent and year. Then Reshape that to have one row per year and one variable for each continent. Or the other way around: one row per continent and one variable per year. Use knitr::kable() to make these tables look pretty in your rendered homework.
-Is there a plot that is easier to make with the data in this shape versis the usual form? If so (or you think so), try it! Reflect.*
+Is there a plot that is easier to make with the data in this shape versus the usual form? If so (or you think so), try it! Reflect.*
 
 I found this [cheatsheet](https://github.com/trinker/tidyr_in_a_nutshell) very useful for this portion of the assignment!
 
