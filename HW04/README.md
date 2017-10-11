@@ -25,8 +25,7 @@ All my resources are scattered throughout my assignment!
 Activity #3: Compute some measure of life expectancy (mean? median? min? max?) for all possible combinations of continent and year. Reshape that to have one row per year and one variable for each continent. Or the other way around: one row per continent and one variable per year.
 - Use knitr::kable() to make these tables look pretty in your rendered homework.
 - Is there a plot that is easier to make with the data in this shape versis the usual form? If so (or you think so), try it! Reflect. 
-
-
+**Note:** I chose median of life expectancy for this activity!
 
 ### Part 2: Join 
 
