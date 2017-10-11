@@ -392,14 +392,15 @@ kable()
     ## Warning: Column `continent` joining factors with different levels, coercing
     ## to character vector
 
-| continent       |      LifeExp|     Population|     GdpPercap|    Coastline\_kms|                                                                                 Highest\_point\_m|
-|:----------------|------------:|--------------:|-------------:|-----------------:|-------------------------------------------------------------------------------------------------:|
-| Africa          |     54.06563|       16954458|      2844.209|             30500|                                                                                              5895|
-| Americas        |     73.01508|       34972879|     10145.354|            328000|                                                                                              6960|
-| Asia            |     69.98118|      112329637|     11323.559|            230300|                                                                                              8850|
-| Europe          |     77.17460|       19405373|     23383.107|             32000|                                                                                              5642|
-| Oceania         |     80.22975|       12001194|     28374.483|             71200|                                                                                              3754|
-| &gt; If my colu |  mns were ou|  t of order me|  rge would re|  arrange the rows|  so that continents were in alphabetical order, unfortunately mine already were ordered this way.|
+| continent |   LifeExp|  Population|  GdpPercap|  Coastline\_kms|  Highest\_point\_m|
+|:----------|---------:|-----------:|----------:|---------------:|------------------:|
+| Africa    |  54.06563|    16954458|   2844.209|           30500|               5895|
+| Americas  |  73.01508|    34972879|  10145.354|          328000|               6960|
+| Asia      |  69.98118|   112329637|  11323.559|          230300|               8850|
+| Europe    |  77.17460|    19405373|  23383.107|           32000|               5642|
+| Oceania   |  80.22975|    12001194|  28374.483|           71200|               3754|
+
+> If my columns were out of order merge would rearrange the rows so that continents were in alphabetical order, unfortunately mine already were ordered this way.
 
 Reflections
 -----------

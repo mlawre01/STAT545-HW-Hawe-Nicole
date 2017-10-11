@@ -256,6 +256,8 @@ In this case identical to:
 inner_join(ds1, ds2, by="continent") %>% 
 kable()
 ```
+
+
 > If my columns were out of order merge would rearrange the rows so that continents were in alphabetical order, unfortunately mine already were ordered this way.
 
 ## Reflections
