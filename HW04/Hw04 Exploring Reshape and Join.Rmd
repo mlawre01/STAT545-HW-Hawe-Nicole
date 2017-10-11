@@ -6,9 +6,10 @@ output: github_document
 ---
 
 ```{r}
-library(gapminder)
-library(tidyverse)
-library(knitr)
+suppressPackageStartupMessages(library(gapminder))
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(knitr))
 ```
 
 ## 1. Reshape
@@ -18,7 +19,7 @@ library(knitr)
 *Compute the median of life expectancy for all possible combinations of continent and year. Then Reshape that to have one row per year and one variable for each continent. Or the other way around: one row per continent and one variable per year. Use knitr::kable() to make these tables look pretty in your rendered homework.
 Is there a plot that is easier to make with the data in this shape versis the usual form? If so (or you think so), try it! Reflect.*
 
-
+I found this [cheatsheet](https://github.com/trinker/tidyr_in_a_nutshell) very useful for this portion of the assignment!
 
 
 ```{r}
@@ -30,11 +31,11 @@ t1 <- gapminder %>%
   kable(t1)
 ```
 
-Now my data is in the wide format, I tried to create a plot but had a lot of trouble. With some research I came to the conclusion that although wide format may be easier to view in a table, the long format is the best for plotting. In this wide format you would have to essentialy plot each continent as a 'y' value. This is what I have done below:
+Now my data is in the wide format, I tried to create a plot but had a lot of trouble. With some research I came to the conclusion that although wide format may be easier to view in a table, the long format is the best for plotting. In this wide format you would have to plot each continent as a 'y' value. This is what I have done below:
 
 ```{r}
 cols <- c( "c1" = "red", "c2" = "blue", "c3"="purple", "c4"="green", "c5"="yellow")
-#this was to just establish my colors off the bat, to save a lot of writing
+#this was to just establish my colors in the beginning
 ```
 
 
@@ -75,7 +76,7 @@ So now let me put this data in the long format and attempt graphing:
 ```
 
 So above I transformed data into wide using spread and then back to long using gather.
-Now I can plot thins long data:
+Now I can plot this long data:
 
 ```{r}
 p2 <- t2 %>%
@@ -119,7 +120,7 @@ kable(ds1)
 ```
 
 Now I'll create a second smaller dataset with the continents and I'll add the coastline in kilometers and the highest point in meters of each continent. 
-This data is courtesy of this [site](https://www.sporcle.com/games/quizace/order-the-continents-ii/results)
+This information is courtesy of this [site](https://www.sporcle.com/games/quizace/order-the-continents-ii/results)
 
 ```{r}
 continent <- c("Africa","Americas","Asia","Europe","Oceania", "Antarctica")
@@ -139,16 +140,20 @@ I want to keep in mind the two types of joins in dyplyr:
 
 1. Mutating joins
 
-left or right_join: join by matching rows
-inner_join: joins data, retaining only rows from both data sets
-full_join: joins data, retaining all values and rows
+**left or right_join:** join by matching rows
+
+**inner_join:** joins data, retaining only rows from both data sets
+
+**full_join:** joins data, retaining all values and rows
 
 2. Filtering joins
 
-semi_join: joins all rows from one data set that have a match in a second data set
-anti_join: joins all rows from one data set that do not have a match in a second data set
+**semi_join:** joins all rows from one data set that have a match in a second data set
 
-* Please note that the only matching column for both datasets was Continent however I decided to still specify by = to get in the habit. *
+**anti_join:** joins all rows from one data set that do not have a match in a second data set
+
+*Please note that the only matching column for both datasets was Continent however I decided to still specify "by = continent" to get in the habit *
+
 
 #### Mutating Joins
 
@@ -158,6 +163,7 @@ anti_join: joins all rows from one data set that do not have a match in a second
 left_join(ds1, ds2, by ="continent") %>% 
   kable()
 ```
+
 What would it look like if we switched the datset order?
 
 ```{r}
@@ -184,7 +190,7 @@ kable()
 
 ```
 
-With this join function the order of "x" and "y" or in my case "ds1" and "ds2", does not matter because u=you will always eliminate rows not found in both sets. As you can see below:
+With this join function the order of "x" and "y" or in my case "ds1" and "ds2", does not matter because you will always eliminate rows not found in both sets. As you can see below:
 
 ```{r}
 inner_join(ds2, ds1, by="continent") %>% 
@@ -197,6 +203,7 @@ kable()
 full_join(ds1, ds2, by="continent") %>% 
 kable()
 ```
+
 > You can see the full_join keeps all rows from ds1 and all rows from ds2!
 
 #### Filtering Joins
@@ -222,7 +229,7 @@ semi_join(ds2, ds1, by="continent") %>%
 
 ##### - Anti_Join
 
-Since anti_join gives the columns of on dataset for rows that are NOT in the second dataset, I am only able to get a result for ds2 being first. This is because all of the rows in the ds1 dataset are also in ds2, therefore there are no results for the call anti_join(ds1, ds2).
+Since anti_join gives the columns of one dataset for rows that are NOT in the second dataset, I am only able to get a result for ds2 being first. This is because all of the rows in the ds1 dataset are also in ds2, therefore there are no results for the call anti_join(ds1, ds2).
 
 ```{r}
 anti_join(ds2, ds1, by = "continent") %>% 
@@ -257,9 +264,9 @@ kable()
 
 - For the second, join part I found it difficult to come up with facts to create the second dataset. I spent quite some time thinking of "cool" facts about the continents I could use to create the second dataset
 
-- I appreciated having to work through all the different join functions with datsets I have actually created becuase it really helped solidify how each join functions operates.
+- I appreciated having to work through all the different join functions with datsets I have actually created, this really helped solidify how each join functions operates.
 
-- I think my next step is to start cleaning up my tables and get better at displying them side by side!
+- I think my next step is to start cleaning up my tables and get better at displaying them side by side!
 
 
 
