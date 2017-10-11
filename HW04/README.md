@@ -1,5 +1,3 @@
-![](Friends-holding-hands-images-HOLDING-HANDS.jpg)
-
 
 # Homework Assignment #4 
 
