@@ -35,10 +35,10 @@ All my resources are scattered throughout my assignment!
 * Activity #1: Create a second data frame, complementary to Gapminder. Join this with (part of) Gapminder using a  dplyr join function and make some observations about the process and result. Explore the different types of joins. Examples of a second data frame you could build:
 One row per country, a country variable and one or more variables with extra info, such as language spoken, NATO membership, national animal, or capitol city. One row per continent, a continent variable and one or more variables with extra info, such as northern versus southern hemisphere.*
 
-**PLUS**: Bonus: Explore the base function merge(), which also does joins. Compare and contrast with dplyr joins.
+**PLUS Bonus:** Explore the base function merge(), which also does joins. Compare and contrast with dplyr joins.
 
 ***
 
-#### I then conclude with some reflections
+#### I then conclude the assignment with some reflections
 
-I would love to here your feedback!
+I look forward to hearing your feedback!
