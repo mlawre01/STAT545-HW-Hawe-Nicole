@@ -11,7 +11,7 @@ suppressPackageStartupMessages(library(knitr))
 ```
 
 1. Reshape
-==========
+----------
 
 #### Activity \#3
 
@@ -115,7 +115,7 @@ p2
 I wanted the continents to be side by side for each year, and found that using position="dodge" with help from this [link](http://ggplot2.tidyverse.org/reference/position_dodge.html)
 
 2. Join
-=======
+-------
 
 #### Activity \#1
 
