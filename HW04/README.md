@@ -7,7 +7,7 @@ Welcome!
 
 This assignment contains two parts that are meant to to solidify our data wrangling skills by working on some realistic problems in the grey area between data aggregation and data reshaping.
 
-Find the Markdown file for the assignment [here]()
+Here is the assignment #4 [Markdown File](https://github.com/nicolehawe/STAT545-HW-Hawe-Nicole/blob/master/HW04/Hw04_Exploring_Reshape_and_Join.md)
 
 Go Back to the main page of my repo [here]()
 
