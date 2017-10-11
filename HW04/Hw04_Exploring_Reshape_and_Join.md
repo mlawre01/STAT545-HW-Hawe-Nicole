@@ -11,7 +11,7 @@ suppressPackageStartupMessages(library(knitr))
 ```
 
 1. Reshape
-----------
+==========
 
 #### Activity \#3
 
@@ -115,11 +115,11 @@ p2
 I wanted the continents to be side by side for each year, and found that using position="dodge" with help from this [link](http://ggplot2.tidyverse.org/reference/position_dodge.html)
 
 2. Join
--------
+=======
 
 #### Activity \#1
 
-I found this [cheatsheet](http://stat545.com/bit001_dplyr-cheatsheet.html)very helpful for this portion of the assignment.
+I found this [cheatsheet](http://stat545.com/bit001_dplyr-cheatsheet.html) very helpful for this portion of the assignment.
 
 *Create a second data frame, complementary to Gapminder. Join this with (part of) Gapminder using a dplyr join function and make some observations about the process and result. Explore the different types of joins. Examples of a second data frame you could build: One row per country, a country variable and one or more variables with extra info, such as language spoken, NATO membership, national animal, or capitol city. If you really want to be helpful, you could attempt to make a pull request to resolve this issue, where I would like to bring ISO country codes into the gapminder package. One row per continent, a continent variable and one or more variables with extra info, such as northern versus southern hemisphere.*
 
