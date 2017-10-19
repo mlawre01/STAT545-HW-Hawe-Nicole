@@ -1,5 +1,5 @@
 
-![](https://thumbs.dreamstime.com/t/colorful-fireworks-banner-black-background-63533687.jpg)
+![](http://www.timelinecoverbanner.com/facebook-covers/2011/12/firework-happy-new-year.jpg)
 
 # Homework Assignment 5
 ***
