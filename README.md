@@ -17,7 +17,7 @@ This readme file was created for Stat545 Homework 1. It belongs to Nicole Hawe, 
 
 [Homework Assignment 2: Exploring Gapminder and Dplyr](https://github.com/nicolehawe/STAT545-HW-Hawe-Nicole/tree/master/HW02)
 
-[Homework Assignment 3: More In Depth Dplyr and Ggplt](https://github.com/nicolehawe/STAT545-HW-Hawe-Nicole/tree/master/HW03)
+[Homework Assignment 3: More In Depth Dplyr and Ggplot](https://github.com/nicolehawe/STAT545-HW-Hawe-Nicole/tree/master/HW03)
 
 [Homework Assignment 4: Tidy Data and Joins](https://github.com/nicolehawe/STAT545-HW-Hawe-Nicole/tree/master/HW04)
 
