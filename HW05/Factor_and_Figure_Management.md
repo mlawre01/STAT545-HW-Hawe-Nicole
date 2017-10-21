@@ -143,7 +143,7 @@ str(no_oceania3)
     ##  $ pop      : int  8425333 9240934 10267083 11537966 13079460 14880372 12881816 13867957 16317921 22227415 ...
     ##  $ gdpPercap: num  779 821 853 836 740 ...
 
-> You can see in both cases the level for Oceania is dropped as continent only has 4 levels. However when using the forcats::fct\_drop you lose all the other information in the data frame. I believe this is because with this forcats function you have to specify the factor you are looking at ie continents, and this then eliminates all other information. With the base function drop levels I looks through the entire dataframe and factors to drop levels, maintaining the information.
+> You can see in both cases the level for Oceania is dropped as continent only has 4 levels. However when using the forcats::fct\_drop you lose all the other information in the data frame. I believe this is because with this forcats function you have to specify the factor you are looking at (ie continents), and this then eliminates all other information in the dataframe. With the base function drop levels it looks through the entire dataframe for factors to drop levels, maintaining the rest of the information.
 
 ------------------------------------------------------------------------
 
