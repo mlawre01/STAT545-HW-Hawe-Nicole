@@ -21,6 +21,8 @@ This readme file was created for Stat545 Homework 1. It belongs to Nicole Hawe, 
 
 [Homework Assignment 4](https://github.com/nicolehawe/STAT545-HW-Hawe-Nicole/tree/master/HW04)
 
+[Homework Assignment 5](https://github.com/nicolehawe/STAT545-HW-Hawe-Nicole/tree/master/HW05)
+
 
 
 Find all the info you need about the class at this [link](http://stat545.com/index.html)
