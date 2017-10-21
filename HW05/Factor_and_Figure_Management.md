@@ -271,7 +271,7 @@ head(no_oceania4)
     ## 5      Asia  1987 16495304
     ## 6      Asia  1982 14441916
 
-> You can see that the order has now changes in the table
+> You can see that the order has now changed in the table
 
 But when we go to graph it:
 
@@ -286,7 +286,7 @@ no_oceania3 %>%
 
 ![](Factor_and_Figure_Management_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-18-1.png)
 
-It remains in the same alphabetical order in the legend! But what if I try reordering based on highest med pop to lowest using fact\_reorder2. I use fct\_reorder2 because this is quatitative versus quatitative data:
+It remains in the same alphabetical order in the legend! But what if I try reordering based on highest median pop to lowest using fact\_reorder2. I use fct\_reorder2 because this is quatitative versus quatitative data:
 
 ``` r
 no_oceania3 %>% 
