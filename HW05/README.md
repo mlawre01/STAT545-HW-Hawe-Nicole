@@ -19,13 +19,13 @@ For this assingment I stuck with the Gapminder dataset to complete some of these
 
 - Write some data to file and load it back into R. E.g., save a plot to file and include it in a R Markdown report 
 
-Check out the assingment on the [STAT545 site](http://stat545.com/hw05_factor-figure-boss-repo-hygiene.html)
+Check out the assignment on the [STAT545 site](http://stat545.com/hw05_factor-figure-boss-repo-hygiene.html)
 
 
 
 ### REFLECTIONS
 
-- Wow first of all I had no idea what a factor really was before this class and assignment! this caused me to spend some extra time trying to get a grasp of it.
+- Wow first of all I had no idea what a factor really was before this class and assignment! This caused me to spend some extra time trying to get a grasp of it.
 
 - I am not sure if I interpreted the difference between forcats:fct_drop versus the base function droplevels....I would love more of an explanation as to why forcats drops all the other information in the original dataframe.
 
