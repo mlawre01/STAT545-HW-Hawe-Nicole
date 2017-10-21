@@ -13,15 +13,15 @@ This readme file was created for Stat545 Homework 1. It belongs to Nicole Hawe, 
 ***
 ### My Homework So Far
 ***
-[Homework Assignment 1](https://github.com/nicolehawe/STAT545-HW-Hawe-Nicole/tree/master/HW01)
+[Homework Assignment 1: Using R Markdown](https://github.com/nicolehawe/STAT545-HW-Hawe-Nicole/tree/master/HW01)
 
-[Homework Assignment 2](https://github.com/nicolehawe/STAT545-HW-Hawe-Nicole/tree/master/HW02)
+[Homework Assignment 2: Exploring Gapminder and Dplyr](https://github.com/nicolehawe/STAT545-HW-Hawe-Nicole/tree/master/HW02)
 
-[Homework Assignment 3](https://github.com/nicolehawe/STAT545-HW-Hawe-Nicole/tree/master/HW03)
+[Homework Assignment 3: More In Depth Dplyr and Ggplt](https://github.com/nicolehawe/STAT545-HW-Hawe-Nicole/tree/master/HW03)
 
-[Homework Assignment 4](https://github.com/nicolehawe/STAT545-HW-Hawe-Nicole/tree/master/HW04)
+[Homework Assignment 4: Tidy Data and Joins](https://github.com/nicolehawe/STAT545-HW-Hawe-Nicole/tree/master/HW04)
 
-[Homework Assignment 5](https://github.com/nicolehawe/STAT545-HW-Hawe-Nicole/tree/master/HW05)
+[Homework Assignment 5: Fator and Figure Management](https://github.com/nicolehawe/STAT545-HW-Hawe-Nicole/tree/master/HW05)
 
 
 
